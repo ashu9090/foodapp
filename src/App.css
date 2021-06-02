@@ -1,38 +1,62 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+input,
+textarea,
+select,
+ol,
+ul,
+li,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  text-decoration: none;
+  outline: none;
+}
+a,
+a:hover,
+a:focus {
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease 0s;
+  -moz-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  text-decoration: none;
+  outline: none;
+  text-decoration: none;
+}
+button:focus {
+  outline: none;
+  border: none;
+}
+button:focus,
+input:focus {
+  box-shadow: none !important;
+}
+button {
+  cursor: pointer;
+}
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ls li {
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  font-family: "Grand Hotel", cursive;
 }
