@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-scroll";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
-import MoreIcon from "@material-ui/icons/MoreVert";
+// import AccountCircle from "@material-ui/icons/AccountCircle";
+// import MailIcon from "@material-ui/icons/Mail";
+// import NotificationsIcon from "@material-ui/icons/Notifications";
+import MenuIcon from "@material-ui/icons/Menu";
 import {
   Container,
   AppBar,
   Toolbar,
   IconButton,
-  Badge,
-  MenuItem,
+  // Badge,
+  // MenuItem,
   Menu,
 } from "@material-ui/core";
 
@@ -31,6 +31,31 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  mobLink: {
+    [theme.breakpoints.down("md")]: {
+      "& .MuiPaper-rounded": {
+        left: "0 !important",
+        right: "0 !important",
+        top: "62px !important",
+        background: "rgba(0,0,0,0.9)",
+        maxWidth: "100%",
+
+        "& ul": {
+          padding: "0px",
+          display: "flex",
+          flexDirection: "column",
+          "& a": {
+            padding: "10px",
+            color: "#fff",
+            "&:hover": {
+              background: "red",
+              color: "#fff",
+            },
+          },
+        },
+      },
+    },
+  },
 }));
 
 function Header() {
@@ -38,12 +63,12 @@ function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const isMenuOpen = Boolean(anchorEl);
+  // const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleProfileMenuOpen = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -59,26 +84,27 @@ function Header() {
   };
 
   const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Login</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Register</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-    </Menu>
-  );
+  // const renderMenu = (
+  //   <Menu
+  //     anchorEl={anchorEl}
+  //     anchorOrigin={{ vertical: "top", horizontal: "right" }}
+  //     id={menuId}
+  //     keepMounted
+  //     transformOrigin={{ vertical: "top", horizontal: "right" }}
+  //     open={isMenuOpen}
+  //     onClose={handleMenuClose}
+  //   >
+  //     <MenuItem onClick={handleMenuClose}>Login</MenuItem>
+  //     <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+  //     <MenuItem onClick={handleMenuClose}>Account</MenuItem>
+  //     <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+  //   </Menu>
+  // );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
+      className={classes.mobLink}
       anchorEl={mobileMoreAnchorEl}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
       id={mobileMenuId}
@@ -87,33 +113,36 @@ function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+      <Link
+        activeClass="active"
+        to="food"
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+      >
+        Browse Food
+      </Link>
+      <Link
+        activeClass="active"
+        to="app"
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+      >
+        Download App
+      </Link>
+      <Link
+        activeClass="active"
+        to="about"
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={500}
+      >
+        About Us
+      </Link>
     </Menu>
   );
   const [scroll, setScroll] = useState(false);
@@ -133,71 +162,41 @@ function Header() {
             <LogoBox>
               <img src={img} alt="logo" />
             </LogoBox>
-            <NavContainer>
-              <Link
-                activeClass="active"
-                to="food"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-              >
-                Browse Food
-              </Link>
-              <Link
-                activeClass="active"
-                to="app"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-              >
-                Download App
-              </Link>
-              <Link
-                activeClass="active"
-                to="about"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-              >
-                About Us
-              </Link>
-              {/* <NavLink
-                to="/food"
-                exact
-                activeClassName="selected"
-                activeStyle={{
-                  color: "red",
-                }}
-              >
-                Browse Food
-              </NavLink>
-              <NavLink
-                to="/app"
-                exact
-                activeClassName="selected"
-                activeStyle={{
-                  color: "red",
-                }}
-              >
-                Download App
-              </NavLink>
-              <NavLink
-                to="/about"
-                exact
-                activeClassName="selected"
-                activeStyle={{
-                  color: "red",
-                }}
-              >
-                About Us
-              </NavLink> */}
-            </NavContainer>
-
             <div className={classes.sectionDesktop}>
-              <IconButton
+              <NavContainer>
+                <Link
+                  activeClass="active"
+                  to="food"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                >
+                  Browse Food
+                </Link>
+                <Link
+                  activeClass="active"
+                  to="app"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                >
+                  Download App
+                </Link>
+                <Link
+                  activeClass="active"
+                  to="about"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                >
+                  About Us
+                </Link>
+              </NavContainer>
+
+              {/* <IconButton
                 aria-label="show 17 new notifications"
                 color="inherit"
               >
@@ -214,7 +213,7 @@ function Header() {
                 color="inherit"
               >
                 <AccountCircle />
-              </IconButton>
+              </IconButton> */}
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
@@ -224,14 +223,14 @@ function Header() {
                 onClick={handleMobileMenuOpen}
                 color="inherit"
               >
-                <MoreIcon />
+                <MenuIcon />
               </IconButton>
             </div>
           </Toolbar>
         </Container>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
+      {/* {renderMenu} */}
     </HeaderBox>
   );
 }

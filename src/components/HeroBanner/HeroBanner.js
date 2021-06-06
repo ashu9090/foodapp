@@ -79,7 +79,6 @@ function HeroBanner() {
               <img src={Photo3} alt="pic" style={{ height: "100%" }} />
             </Img3>
             <Img4 data-aos="fade-down">
-              >
               <img src={Photo4} alt="pic" style={{ width: "100%" }} />
             </Img4>
           </PhotoBox>
